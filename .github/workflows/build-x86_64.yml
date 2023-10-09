@@ -1,6 +1,7 @@
 name: Build for x86_64
 
 on:
+  workflow_dispatch:
   create:
     ref_type: "tag"
 
