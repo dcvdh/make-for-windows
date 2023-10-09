@@ -9,11 +9,16 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: build
-      run: |
-        .\build_w32.bat gcc
-        move GccRel\gnumake.exe make.exe
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "make.exe"
+      - uses: actions/checkout@v4
+      
+      - name: build
+        run: |
+          .\bootstrap.bat
+          .\build_w32.bat gcc
+          
+      - name: install
+        run: move GccRel\gnumake.exe make.exe
+        
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "make.exe"
