@@ -15,8 +15,8 @@ jobs:
           .\bootstrap.bat
           .\build_w32.bat gcc
           
-      - name: rename
-        run: move GccRel\gnumake.exe make.exe
+      - name: strip
+        run: strip --strip-unneeded -o make.exe GccRel\gnumake.exe
         
       - uses: ncipollo/release-action@v1
         with:
