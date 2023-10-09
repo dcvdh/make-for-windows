@@ -1,7 +1,6 @@
 name: Build for x86_64
 
 on:
-  workflow_dispatch:
   create:
     ref_type: "tag"
 
@@ -16,7 +15,7 @@ jobs:
           .\bootstrap.bat
           .\build_w32.bat gcc
           
-      - name: install
+      - name: rename
         run: move GccRel\gnumake.exe make.exe
         
       - uses: ncipollo/release-action@v1
