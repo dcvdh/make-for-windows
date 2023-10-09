@@ -1,0 +1,18 @@
+name: Build for x86_64
+
+on:
+  create:
+    ref_type: "tag"
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: build
+      run: |
+        .\build_w32.bat gcc
+        move GccRel\gnumake.exe make.exe
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "make.exe"
